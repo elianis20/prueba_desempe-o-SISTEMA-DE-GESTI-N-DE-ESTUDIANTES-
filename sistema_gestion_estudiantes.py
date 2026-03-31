@@ -27,22 +27,22 @@ opcion = 0
 
 def registro_de_estudiantes():
         
-        if opcion == "1":
-            id_estudiante = int(input("Ingrese el No° de documento: "))
-            nombre = input("Ingrese el nombre:  ")
-            edad = int(input("Ingresa la edad: "))
-            curso = input("Ingrese el grado")
-            
-            id_estudiante = max (estudiantes.keys()) + 1
-            
-            estudiantes[4] = {
-                "id": id_estudiante,
-                "Nombre": nombre,
-                "Edad": edad,
-                "Curso": curso,
-                "Estado": "Activo"}
-            
-            print(f"Estudiantes {id_estudiante}, {nombre}, {edad}, {curso}, ESTUDIANTE AGREGADO CON EXITO")
+        
+    ID_estudiante = int(input("Ingrese el No° de documento: "))
+    nombre = input("Ingrese el nombre:  ")
+    edad = int(input("Ingresa la edad: "))
+    curso = input("Ingrese el grado: ")
+    
+    ID_estudiante_estudiante = max (estudiantes.keys()) + 1
+    
+    estudiantes[4] = {
+        "ID": ID_estudiante,
+        "Nombre": nombre,
+        "Edad": edad,
+        "Curso": curso,
+        "Estado": "Activo"}
+    
+    print(f"Estudiantes {ID_estudiante_estudiante}, {nombre}, {edad}, {curso}, ESTUDIANTE AGREGADO CON EXITO")
 
 
 #FUNCION PARA BUSCAR ESTUDIANTE CON EL METODO GET
@@ -50,33 +50,28 @@ def registro_de_estudiantes():
 def buscar_estudiante(): 
         
 
-        if opcion == "2":
-            
-            id_estudiante = int(input("Ingrese el Id del estudiante: "))
-            id_estudiante = None
+    ID_estudiante_estudiante = int(input("Ingrese el Id del estudiante: "))
 
-            print("Buscando por Id del estudiante ")
-            print("Buscando con metodo get")
-            print(estudiantes.get(1, "NO ENCONTRADO"))
+    print("Buscando por Id del estudiante ")
+    print("Buscando con metodo get")
+    print(estudiantes.get(1, "NO ENCONTRADO"))
 
-            for llave, dato in estudiantes.items():
-                if dato["id"] == estudiantes:
-                        id_estudiante = dato
+    for llave, dato in estudiantes.items():
+        if dato["ID"] == estudiantes:
+                ID_estudiante = dato
 
-                print(id_estudiante)    
-                print("ESTUDIANTE ENCONTRADO")
+        print(ID_estudiante)    
+        print("ESTUDIANTE ENCONTRADO")
 
 
 #FUNCION PARA CONSULTAR LA LISTA DE LOS ESTUDIANTES EXISTENTE 
 
 def consultar_estudiante():
 
-        if opcion == "3":
-
-            print(f"lista de estudiantes")
-            
-            for clave, datos in estudiantes.items():
-                buscar_estudiante = datos [estudiantes]
+    print(f"lista de estudiantes")
+    
+    for clave, datos in estudiantes.items():
+        buscar_estudiante = datos [estudiantes]
 
 
 
@@ -84,30 +79,25 @@ def consultar_estudiante():
 
 def eliminar_estudiante():
 
-        if opcion == "4":
-
-            borrar = int(input("Ingresa el ID para eliminar estudiante: "))
-            del (estudiantes[borrar])
-            print(estudiantes)
+    borrar = int(input("Ingresa el ID para eliminar estudiante: "))
+    del (estudiantes[borrar])
+    print(estudiantes)
 
 
 #FUNCION PARA ACTUALZAR LA LISTA DE LOS ESTUDIANTES (DATOS: NOMBRE, ID, EDAD, CURSO)
 
 def actualizar_estudiante():
 
-        if opcion == "5":
-            
-            clave = int(input("Ingrese el numero del estudiante: "))
+    clave = int(input("Ingrese el numero del estudiante: "))
 
-            if clave in estudiantes:
-                estudiantes [clave] ["Nombre"] = nombre = input("Ingresa el nombre del estudiante: ")
-                estudiantes [clave] ["id"] = id_estudiante = int(input("Ingresa el numero de id del estudiante: "))
-                estudiantes [clave] ["edad"] = edad = int(input("Ingrese la edad del estudiante: "))
-                estudiantes [clave] ["curso"] = curso = input("Ingrese el curso del estudiante: ")
+    if clave in estudiantes:
+        estudiantes [clave] ["Nombre"] = nombre = input("Ingresa el nombre del estudiante: ")
+        estudiantes [clave] ["id"] = ID_estudiante = int(input("Ingresa el numero de id del estudiante: "))
+        estudiantes [clave] ["edad"] = edad = int(input("Ingrese la edad del estudiante: "))
+        estudiantes [clave] ["curso"] = curso = input("Ingrese el curso del estudiante: ")
 
-                print("Actualizado")
+        print("Actualizado")
 
-            
 
 
 
@@ -133,27 +123,26 @@ def main():
 
         opcion = input("  Selecciona una opción (1-6): ").strip()
 
-        # Validar que sea un número del 1 al 6
-        if not opcion.isdigit() or not (1 <= int(opcion) <= 6):
-            print("  ⚠ Opción inválida. Ingresa un número del 1 al 6.")
-            continue
 
+            
+
+        
+        try: 
             opcion = int(opcion)
 
-            try: 
-                if opcion == "1": 
-                    registro_de_estudiantes()
-                elif opcion == "2": buscar_estudiante()
-                elif opcion == "3": consultar_estudiante()
-                elif opcion == "4": eliminar_estudiante()
-                elif opcion == "5" : actualizar_estudiante()
-                elif opcion == "6":
-                    print("salir")
-                    break
+            if opcion == 1: 
+                registro_de_estudiantes()
+            elif opcion == 2: buscar_estudiante()
+            elif opcion == 3: consultar_estudiante()
+            elif opcion == 4: eliminar_estudiante()
+            elif opcion == 5 : actualizar_estudiante()
+            elif opcion == 6:
+                print("salir")
+                break
 
-            except Exception as e:
-            
-                print(f"  ✗ Error inesperado: {e}. Volviendo al menú...")
+        except Exception as e:
+
+            print(f"   Error inesperado: {e}. Volviendo al menú...")
 
 
 if __name__ == "__main__":
